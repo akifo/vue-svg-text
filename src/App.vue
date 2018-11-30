@@ -1,28 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="preview">
+      <ThePreviewSvg :msg="msg" :text1.sync="text1"/>
+    </div>
+    <div class="interface">
+      <TheInterfaceType :msg.sync="msg" :text1.sync="text1"/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
-  name: "app",
-  components: {
-    HelloWorld
+  name: 'app',
+  data() {
+    return {
+      msg: 'Awesome',
+      text1: '2018.12.01'
+    }
   }
-};
+}
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+// VS code で stylus 2つかけないので、とりあえず css で
+<style lang="css">
+body {
+  margin: 0;
+  padding: 0;
 }
+</style>
+
+<style lang="stylus" scoped>
+#app
+  width: 100vw
+  height: 100vh
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  display: grid
+  grid-template-columns: 50% 50%
+  grid-template-rows: 50vh 1fr
+
+.preview
+  grid-column: 1 / 2
+  grid-row: 1 / 10
+
+.interface
+  grid-column: 2 / 3
+  grid-row: 1 / 10
 </style>
